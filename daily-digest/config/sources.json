@@ -1,7 +1,20 @@
 {
   "substacks": [
-    { "name": "Matt Levine", "slug": "mattlevine" },
-    { "name": "Lenny's Newsletter", "slug": "lennysnewsletter" },
-    { "name": "Stratechery", "slug": "stratechery" }
+    { "name": "FundaAI", "slug": "fundaai" },
+    { "name": "Global Technology Research", "slug": "globaltechresearch" },
+    { "name": "TMT Breakout", "slug": "tmtbreakout" },
+    { "name": "The Ankler", "slug": "theankler" },
+    { "name": "BEP Research", "slug": "benitoz" },
+    { "name": "Beyond The Hype", "slug": "enertuition" },
+    { "name": "Citrini Research", "slug": "citrini" },
+    { "name": "Fintech Blueprint", "slug": "lex" },
+    { "name": "Global Semi Research", "slug": "globalsemiresearch" },
+    { "name": "Herb Greenberg", "slug": "herbgreenberg" },
+    { "name": "Latent.Space", "slug": "swyx" },
+    { "name": "Like & Subscribe", "slug": "likeandsubscribenews" },
+    { "name": "Nomad Semi", "slug": "nomadsemi" },
+    { "name": "A Peek Behind the Numbers", "slug": "peekbehindthenumbers" },
+    { "name": "Sources", "slug": "sourcesnews" },
+    { "name": "UncoverAlpha", "slug": "uncoveralpha" }
   ]
 }
