@@ -74,19 +74,24 @@ export async function saveDigest(
 export async function sendDigest(
   html: string,
   dateLabel: string,
-  config: { gmailUser: string; gmailAppPassword: string; to: string }
+  config: { outlookUser: string; outlookAppPassword: string; to: string }
 ): Promise<void> {
   const transporter = createTransport({
-    service: "gmail",
+    host: "smtp-mail.outlook.com",
+    port: 587,
+    secure: false,
     auth: {
-      user: config.gmailUser,
-      pass: config.gmailAppPassword,
+      user: config.outlookUser,
+      pass: config.outlookAppPassword,
+    },
+    tls: {
+      ciphers: "SSLv3",
     },
   });
 
   const subject = `Daily Digest — ${dateLabel}`;
   const mailOptions = {
-    from: config.gmailUser,
+    from: config.outlookUser,
     to: config.to,
     subject,
     html,

@@ -9,10 +9,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const envSchema = z.object({
   ANTHROPIC_API_KEY: z.string().min(1, "ANTHROPIC_API_KEY is required"),
-  GMAIL_USER: z.string().email("GMAIL_USER must be a valid Gmail address"),
-  GMAIL_APP_PASSWORD: z.string().min(1, "GMAIL_APP_PASSWORD is required"),
+  OUTLOOK_USER: z.string().email("OUTLOOK_USER must be a valid email"),
+  OUTLOOK_APP_PASSWORD: z.string().min(1, "OUTLOOK_APP_PASSWORD is required"),
   EMAIL_TO: z.string().email("EMAIL_TO must be a valid email"),
-  SUBSTACK_SID: z.string().optional(),
   DIGEST_TIMEZONE: z.string().default("America/New_York"),
 });
 
@@ -36,10 +35,9 @@ export function loadConfig(): AppConfig {
 
   return {
     anthropicApiKey: env.ANTHROPIC_API_KEY,
-    gmailUser: env.GMAIL_USER,
-    gmailAppPassword: env.GMAIL_APP_PASSWORD,
+    outlookUser: env.OUTLOOK_USER,
+    outlookAppPassword: env.OUTLOOK_APP_PASSWORD,
     emailTo: env.EMAIL_TO,
-    substackSid: env.SUBSTACK_SID || undefined,
     timezone: env.DIGEST_TIMEZONE,
     substacks: sources.substacks as SubstackSource[],
     dryRun,

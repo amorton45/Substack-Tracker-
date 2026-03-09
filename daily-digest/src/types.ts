@@ -36,10 +36,9 @@ export interface Digest {
 
 export interface AppConfig {
   anthropicApiKey: string;
-  gmailUser: string;
-  gmailAppPassword: string;
+  outlookUser: string;
+  outlookAppPassword: string;
   emailTo: string;
-  substackSid: string | undefined;
   timezone: string;
   substacks: SubstackSource[];
   dryRun: boolean;

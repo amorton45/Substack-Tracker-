@@ -11,11 +11,11 @@ async function main() {
 
   console.log(`Fetching posts since ${since.toISOString()}...`);
 
-  // 1. Collect
+  // 1. Collect from Outlook inbox
   const { posts, warnings } = await collectSubstackPosts(
     config.substacks,
     since,
-    config.substackSid
+    { user: config.outlookUser, password: config.outlookAppPassword }
   );
 
   if (posts.length === 0) {
@@ -51,8 +51,8 @@ async function main() {
     console.log("Dry run complete. Email not sent.");
   } else {
     await sendDigest(digest.html, format(now, "MMMM d, yyyy"), {
-      gmailUser: config.gmailUser,
-      gmailAppPassword: config.gmailAppPassword,
+      outlookUser: config.outlookUser,
+      outlookAppPassword: config.outlookAppPassword,
       to: config.emailTo,
     });
     console.log(`Digest emailed to ${config.emailTo}.`);
