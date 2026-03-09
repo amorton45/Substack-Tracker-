@@ -11,6 +11,8 @@ const THIN_CONTENT_PHRASES = [
   "this post is for paying subscribers",
 ];
 const FEED_DELAY_MS = 1000;
+const USER_AGENT =
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36";
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -69,7 +71,7 @@ async function fetchViaRss(
   sid?: string
 ): Promise<{ posts: CollectedPost[]; usedCookie: boolean }> {
   const feedUrl = `https://${source.slug}.substack.com/feed`;
-  const headers: Record<string, string> = {};
+  const headers: Record<string, string> = { "User-Agent": USER_AGENT };
   if (sid) {
     headers["Cookie"] = `substack.sid=${sid}`;
   }
@@ -111,7 +113,7 @@ async function fetchViaApi(
   sid?: string
 ): Promise<CollectedPost[]> {
   const apiUrl = `https://${source.slug}.substack.com/api/v1/posts?limit=10`;
-  const headers: Record<string, string> = {};
+  const headers: Record<string, string> = { "User-Agent": USER_AGENT };
   if (sid) {
     headers["Cookie"] = `substack.sid=${sid}`;
   }
