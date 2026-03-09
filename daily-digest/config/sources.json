@@ -1,0 +1,7 @@
+{
+  "substacks": [
+    { "name": "Matt Levine", "slug": "mattlevine" },
+    { "name": "Lenny's Newsletter", "slug": "lennysnewsletter" },
+    { "name": "Stratechery", "slug": "stratechery" }
+  ]
+}

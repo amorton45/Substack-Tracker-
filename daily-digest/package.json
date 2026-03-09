@@ -1,0 +1,26 @@
+{
+  "name": "daily-digest",
+  "version": "1.0.0",
+  "description": "Daily Substack digest with Claude summarization",
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "dry-run": "tsx src/index.ts --dry-run"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "date-fns": "^4.1.0",
+    "dotenv": "^16.4.7",
+    "html-to-text": "^9.0.5",
+    "marked": "^15.0.6",
+    "resend": "^4.1.2",
+    "rss-parser": "^3.13.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/html-to-text": "^9.0.4",
+    "@types/node": "^22.13.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}
