@@ -51,8 +51,8 @@ async function main() {
     console.log("Dry run complete. Email not sent.");
   } else {
     await sendDigest(digest.html, format(now, "MMMM d, yyyy"), {
-      apiKey: config.resendApiKey,
-      from: config.emailFrom,
+      gmailUser: config.gmailUser,
+      gmailAppPassword: config.gmailAppPassword,
       to: config.emailTo,
     });
     console.log(`Digest emailed to ${config.emailTo}.`);

@@ -1,4 +1,4 @@
-import { Resend } from "resend";
+import { createTransport } from "nodemailer";
 import { marked } from "marked";
 import { format } from "date-fns";
 import { writeFile, mkdir } from "fs/promises";
@@ -74,27 +74,29 @@ export async function saveDigest(
 export async function sendDigest(
   html: string,
   dateLabel: string,
-  config: { apiKey: string; from: string; to: string }
+  config: { gmailUser: string; gmailAppPassword: string; to: string }
 ): Promise<void> {
-  const resend = new Resend(config.apiKey);
+  const transporter = createTransport({
+    service: "gmail",
+    auth: {
+      user: config.gmailUser,
+      pass: config.gmailAppPassword,
+    },
+  });
 
   const subject = `Daily Digest — ${dateLabel}`;
+  const mailOptions = {
+    from: config.gmailUser,
+    to: config.to,
+    subject,
+    html,
+  };
 
   try {
-    await resend.emails.send({
-      from: config.from,
-      to: config.to,
-      subject,
-      html,
-    });
+    await transporter.sendMail(mailOptions);
   } catch (err) {
     console.warn(`Email send failed, retrying: ${err}`);
     await sleep(RETRY_DELAY_MS);
-    await resend.emails.send({
-      from: config.from,
-      to: config.to,
-      subject,
-      html,
-    });
+    await transporter.sendMail(mailOptions);
   }
 }
